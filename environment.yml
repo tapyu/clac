@@ -1,8 +1,0 @@
-name: clac
-dependencies:
-  - python=3.8.0
-  - mypy
-  - pip:
-    - aqt
-    - anki
-    - ankirspy
