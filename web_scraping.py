@@ -1,15 +1,19 @@
 # from selenium import webdriver
+# driver = webdriver.Chrome("C:\\Users\\rubem\\Downloads\\chromedriver_win32\\chromedriver.exe")
+# driver.get('https://www.collinsdictionary.com/us/')
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
 
-# data = {'meaning':'', 'conjugations':[], 'conjugations sp':[], 'examples':[], 'examples sp':[], 'tag':''} # sp = sound path
 
-# print('What is the name that you would like to search?')
-# word = input()
+def is_class_cell_center(tag):
+    """
+    search if the class has the attribute "class" and if its value is "res_cel_center"
+    """
+    if tag.has_attr('class') and tag['class'][0] == "res_cell_center":
+        return True
+    else:
+        return False
 
-# driver = webdriver.Chrome("C:\\Users\\rubem\\Downloads\\chromedriver_win32\\chromedriver.exe")
-
-# driver.get('https://www.collinsdictionary.com/us/')
 
 url = 'https://www.collinsdictionary.com/us/dictionary/english/bait'
 
@@ -19,7 +23,19 @@ webpage = urlopen(req).read()
 
 soup = BeautifulSoup(webpage, features="lxml")
 
-search = soup.find('div', class_='hom')
+main = soup.find('div', id='main_content')
 
-print(search.prettify())
-print(search.span.text)
+# print(main.prettify())
+
+# for center in main.find_all(is_class_cell_center, recursive=False, ):
+#     print(center['class'])
+
+# for tag in main.find_all(True):
+#     print(tag.name)
+
+center = main.find(is_class_cell_center, recursive=False)
+# print(type(center))
+
+center_he = center.div.find('div', attr={'class':'he'})
+
+print(center_he['class'])
