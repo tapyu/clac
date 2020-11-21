@@ -3,7 +3,7 @@
 # driver.get('https://www.collinsdictionary.com/us/')
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
-
+import requests
 
 def is_class_cell_center(tag):
     """
@@ -36,6 +36,14 @@ main = soup.find('div', id='main_content')
 center = main.find(is_class_cell_center, recursive=False)
 # print(type(center))
 
-center_he = center.div.find('div', attr={'class':'he'})
+meaning_core = center.div.find('div', class_='he').div.find('div', class_='dictionaries dictionary').find('div', class_='dictionary Cob_Adv_US dictentry').div.div
 
-print(center_he['class'])
+mp3_url = meaning_core.find('div', class_='mini_h2').find('span', class_='pron type-').find('span', class_='ptr hwd_sound type-hwd_sound').a['data-src-mp3']
+
+mp3 = requests.get(mp3_url, allow_redirects=True)
+
+#print(mp3_url)
+
+open('bait.mp3', 'wb').write(mp3.content)
+
+print(mp3.headers.get('content-type'))

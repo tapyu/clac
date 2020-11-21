@@ -164,6 +164,11 @@ jaw
 Kidnap 
 Lame 
 Leak 
+take off
+pull out
+pull together
+look over
+run up
 Lean
 Lend
 Loan
