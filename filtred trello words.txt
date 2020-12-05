@@ -1,5 +1,6 @@
 grant
 briber
+roam
 grudge
 savvy
 fable
@@ -11,6 +12,9 @@ tangle
 bait
 cower
 plea
+fulfill
+awestruck
+baffles
 chow
 fuss
 fled
@@ -19,6 +23,7 @@ perceive
 Accomplish
 lie - You can talk about where something such as a problem, solution, or fault lies to say what you think it consists of, involves, or is caused by.
 Appalling
+came about
 assess
 fierce
 dummy
@@ -65,6 +70,7 @@ Cringe
 Crowd
 Crutch 
 Cuffing 
+cut it
 Dash
 Dawn 
 Deeds 

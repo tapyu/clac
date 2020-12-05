@@ -1,12 +1,10 @@
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
+import requests, os
 
-url = 'https://www.collinsdictionary.com/us/dictionary/english/bait'
-
-req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-
+searched_word = 'bait'
+url = f'https://www.collinsdictionary.com/us/dictionary/english/{searched_word}'
+headers = {'User-Agent': 'Mozilla/5.0'}
+req = Request(url, headers=headers)
 webpage = urlopen(req).read()
-
-page_soup = BeautifulSoup(webpage, features="lxml")
-
-print(page_soup)
+soup = BeautifulSoup(webpage, features="lxml")
