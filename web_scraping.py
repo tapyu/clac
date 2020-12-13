@@ -67,7 +67,7 @@ def write(scraped_info, option):
     """
     write on the disk the web scrapping
     """
-    def_path = f"words/{scraped_info['searched word']['word']}/def{option}"
+    def_path = f"words/{scraped_info['searched word']['word']}/meaning_{option}"
     if not os.path.exists(def_path):
         os.makedirs(def_path)
     
