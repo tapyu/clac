@@ -4,7 +4,7 @@ def check_is_int(input_):
     """
     try:
         int(input_)
-        raise Exception('The word typed cannot be a number.')
+        raise Exception
     except ValueError:
         pass
 

@@ -1,7 +1,7 @@
 import os
 import pyinputplus as pyip
 from web_scraping import web_scraping, write
-from main_support import check_is_int, tranform2bool
+from pyip_support import check_is_int, tranform2bool
 
 os.system('cls')
 name = pyip.inputCustom(check_is_int, prompt='What is the name of the word/expression? (ctrl+C to cancel)\n').replace(' ', '-')
