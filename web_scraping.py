@@ -72,9 +72,9 @@ def write(scraped_info, option):
         os.makedirs(def_path)
     
     with open(f'{def_path}/meaning{option}.txt', 'wt') as def_file:
-        def_file.write(scraped_info['meanings'][option]['kind']+'\n') # save the kind
-        def_file.write(scraped_info['meanings'][option]['meaning'].replace('\n','')) # save the meaning
+        def_file.write(scraped_info['meanings'][option-1]['kind']+'\n') # save the kind
+        def_file.write(scraped_info['meanings'][option-1]['meaning'].replace('\n','')) # save the meaning
 
-    for index_ex, example in enumerate(scraped_info['examples'][option]):
+    for index_ex, example in enumerate(scraped_info['examples'][option-1]):
         open(f'{def_path}/example{index_ex}.mp3', 'wb').write(example['mp3'])
         open(f'{def_path}/example{index_ex}.txt', 'wt').write(example['example'])
