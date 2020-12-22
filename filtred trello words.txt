@@ -1,4 +1,5 @@
 grant
+expedient
 briber
 nod
 roam
@@ -135,19 +136,25 @@ ditch
 duped 
 eager 
 endure 
+breathtaking
 fancy 
 fiddle
 Fidgeting
 Flair 
 flaunt 
 flaw 
+debut
 Fling 
 former 
 Forsake 
+wears off
+homage
 gal 
 Gambling 
 goofy 
 Grasp 
+letdown
+go by
 Grief 
 Grip
 harbor
@@ -165,6 +172,7 @@ hoax
 hoes 
 hubris 
 hold off
+hold back
 uncanny
 come by
 hunch 
@@ -245,6 +253,7 @@ rotten
 Rumble
 scarcity
 come across - make that impression on people who meet them or are listening to them 
+came about
 scoop 
 scrap 
 seclude 
