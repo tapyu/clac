@@ -17,7 +17,7 @@ def web_scraping(name):
 
     # catching the searched word .mp3
     mp3_url = meaning_core.find('div', class_='mini_h2').find('span', class_='pron type-').find('span', class_='ptr hwd_sound type-hwd_sound').a['data-src-mp3']
-    scraped_info['searched word']['mp3'] = requests.get(mp3_url, headers={'User-Agent': 'Mozilla/5.0'})
+    scraped_info['searched word']['mp3'] = requests.get(mp3_url, headers={'User-Agent': 'Mozilla/5.0'}).content
 
     # catching the inflections of the searched word
     meaning_searched_word = meaning_core.find('div', class_='content definitions cobuild am')
@@ -72,9 +72,14 @@ def write(scraped_info, option):
         os.makedirs(def_path)
     
     with open(f'{def_path}/meaning{option}.txt', 'wt') as def_file:
-        def_file.write(scraped_info['meanings'][option-1]['kind']+'\n') # save the kind
         def_file.write(scraped_info['meanings'][option-1]['meaning'].replace('\n','')) # save the meaning
+    
+    with  open(f'{def_path}/tag.txt', 'wt') as def_file:
+        def_file.write(scraped_info['meanings'][option-1]['kind']+'\n') # save the kind
 
     for index_ex, example in enumerate(scraped_info['examples'][option-1]):
         open(f'{def_path}/example{index_ex}.mp3', 'wb').write(example['mp3'])
         open(f'{def_path}/example{index_ex}.txt', 'wt').write(example['example'])
+
+    with open(f"words/{scraped_info['searched word']['word']}/{scraped_info['searched word']['word']}.mp3", 'wb') as def_file:
+        def_file.write(scraped_info['searched word']['mp3'])

@@ -1,2 +1,4 @@
 words/
 trash.py
+__pycache__/
+*.pyc

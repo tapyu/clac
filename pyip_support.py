@@ -12,7 +12,7 @@ def tranform2bool(input_):
     """
     transform the input parameter to boolean 
     """
-    assert input_[0].lower() in ['y', 'n'], 'The input of Yes/No question should start with "y" or "n"'
+    assert input_[0].lower() in ['y', 'n'], 'The input of Yes/No question should start with "y" or "n", please contact with the developer'
 
     if input_[0].lower() == 'y':
         return True
