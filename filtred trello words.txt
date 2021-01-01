@@ -134,6 +134,7 @@ Crabby
 decease 
 depicted 
 devise 
+poke
 disguise 
 ditch 
 duped 
@@ -232,7 +233,10 @@ overlooked
 Overrun 
 Overtaken 
 Overwhelming 
-Peers 
+peer 
+rash
+max out
+crumble
 persuit 
 pledge 
 Portrayed 
@@ -259,8 +263,22 @@ come across - make that impression on people who meet them or are listening to t
 came about
 scoop 
 scrap 
+compelling
+brink
+cue
+thorn
 seclude 
+amid
 Seep 
+limp
+writhe
+cramp
+limb
+ominous
+take up
+ruth
+marvel
+knack
 Seize 
 selfless 
 settle 
@@ -274,6 +292,8 @@ Shout
 Shrink 
 Silly
 sketchy 
+sketch
+faucet
 skim 
 sleeve 
 slightly 
