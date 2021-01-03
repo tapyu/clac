@@ -1,4 +1,4 @@
-import requests, os
+import requests, os, re
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
 
@@ -13,7 +13,10 @@ def web_scraping(name):
     # starting the web scrapping
     main = soup.find('div', id='main_content')
     center = main.find(is_class_cell_center, recursive=False) # find the center column in the website
-    meaning_core = center.div.find('div', class_='he').div.find('div', class_='dictionaries dictionary').find('div', class_='dictionary Cob_Adv_US dictentry').div.div # return the main core the searched word
+    try:
+        meaning_core = center.div.find('div', class_='he').div.find('div', class_='dictionaries dictionary').find('div', class_='dictionary Cob_Adv_US dictentry').div.div # return the main core the searched word
+    except AttributeError:
+        meaning_core = center.div.find('div', class_='he').div.find('div', class_='dictionaries dictionary dictionary Collins_Eng_Dict').div.div # return the main core the searched word
 
     # catching the searched word .mp3
     try:
@@ -24,14 +27,14 @@ def web_scraping(name):
 
     # catching the inflections of the searched word
     try:
-        meaning_searched_word = meaning_core.find('div', class_='content definitions cobuild am')
+        meaning_searched_word = meaning_core.find('div', class_=re.compile('content definitions .*'))
         inflections_web = meaning_searched_word.find('span', 'form inflected_forms type-infl')
         for inflection_word in inflections_web.find_all('span', class_='orth', recursive=False):
             scraped_info['inflections'].append(inflection_word.text)
     except AttributeError:
         scraped_info['inflections'] = None
     
-    for meaning in meaning_searched_word.find_all(search_definitions, recursive=False):
+    for meaning in meaning_searched_word.find_all(search_definitions, recursive=False): # iterating over the meanings
         scraped_info['meanings'].append({'meaning':meaning.div.find('div', class_='def').text.replace('\n','')})
         scraped_info['meanings'][-1]['kind'] = meaning.find('span', class_=('gramGrp pos', 'gramGrp')).text
         example_per_meaning = []
