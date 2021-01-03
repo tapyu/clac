@@ -16,15 +16,20 @@ def web_scraping(name):
     meaning_core = center.div.find('div', class_='he').div.find('div', class_='dictionaries dictionary').find('div', class_='dictionary Cob_Adv_US dictentry').div.div # return the main core the searched word
 
     # catching the searched word .mp3
-    mp3_url = meaning_core.find('div', class_='mini_h2').find('span', class_='pron type-').find('span', class_='ptr hwd_sound type-hwd_sound').a['data-src-mp3']
-    scraped_info['searched word']['mp3'] = requests.get(mp3_url, headers={'User-Agent': 'Mozilla/5.0'}).content
+    try:
+        mp3_url = meaning_core.find('div', class_='mini_h2').find('span', class_='pron type-').find('span', class_='ptr hwd_sound type-hwd_sound').a['data-src-mp3']
+        scraped_info['searched word']['mp3'] = requests.get(mp3_url, headers={'User-Agent': 'Mozilla/5.0'}).content
+    except AttributeError:
+        scraped_info['searched word']['mp3'] = None # if don't have the searched word .mp3, set it to None
 
     # catching the inflections of the searched word
-    meaning_searched_word = meaning_core.find('div', class_='content definitions cobuild am')
-    inflections_web = meaning_searched_word.find('span', 'form inflected_forms type-infl')
-
-    for inflection_word in inflections_web.find_all('span', class_='orth', recursive=False):
-        scraped_info['inflections'].append(inflection_word.text)
+    try:
+        meaning_searched_word = meaning_core.find('div', class_='content definitions cobuild am')
+        inflections_web = meaning_searched_word.find('span', 'form inflected_forms type-infl')
+        for inflection_word in inflections_web.find_all('span', class_='orth', recursive=False):
+            scraped_info['inflections'].append(inflection_word.text)
+    except AttributeError:
+        scraped_info['inflections'] = None
     
     for meaning in meaning_searched_word.find_all(search_definitions, recursive=False):
         scraped_info['meanings'].append({'meaning':meaning.div.find('div', class_='def').text.replace('\n','')})
@@ -81,5 +86,6 @@ def write(scraped_info, option):
         open(f'{def_path}/example{index_ex}.mp3', 'wb').write(example['mp3'])
         open(f'{def_path}/example{index_ex}.txt', 'wt').write(example['example'])
 
-    with open(f"words/{scraped_info['searched word']['word']}/{scraped_info['searched word']['word']}.mp3", 'wb') as def_file:
-        def_file.write(scraped_info['searched word']['mp3'])
+    if scraped_info['searched word']['mp3'] != None:
+        with open(f"words/{scraped_info['searched word']['word']}/{scraped_info['searched word']['word']}.mp3", 'wb') as def_file:
+            def_file.write(scraped_info['searched word']['mp3'])
