@@ -1,5 +1,4 @@
 grant
-put away
 gist
 help out
 expedient
