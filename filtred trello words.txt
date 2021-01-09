@@ -1,6 +1,8 @@
 grant
+stroll
+bush
+scurry
 gist
-help out
 expedient
 briber
 nod
