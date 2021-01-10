@@ -1,6 +1,5 @@
 import requests, os, re
-from bs4 import BeautifulSoup
-from urllib.request import Request, urlopen
+from support.ws_support import get_soup, is_class_cell_center, search_definitions
 
 def web_scraping(name):
     """
@@ -45,31 +44,6 @@ def web_scraping(name):
         scraped_info['examples'].append(example_per_meaning)
     return scraped_info
 
-def get_soup(name):
-    url = f"https://www.collinsdictionary.com/us/dictionary/english/{name}"
-    req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-    webpage = urlopen(req).read()
-    return BeautifulSoup(webpage, features="lxml")
-
-def is_class_cell_center(tag):
-    """
-    search if the class has the attribute "class" and if its value is "res_cel_center"
-    """
-    if tag.has_attr('class') and tag['class'][0] == "res_cell_center":
-        return True
-    else:
-        return False
-
-def search_definitions(tag): # catching the definitions and the examples of the searched word
-    """
-    assure that the web scraping returns just definitions of the word
-    """
-    if ' '.join(tag['class']) != 'hom':
-        return False
-    elif ' '.join(tag.div['class']) != 'sense':
-        return False
-    else:
-        return True
 
 def write(scraped_info, option):
     """
@@ -85,10 +59,10 @@ def write(scraped_info, option):
     with  open(f'{def_path}/tag.txt', 'wt') as def_file:
         def_file.write(scraped_info['meanings'][option-1]['kind']+'\n') # save the kind
 
-    for index_ex, example in enumerate(scraped_info['examples'][option-1]):
+    for index_ex, example in enumerate(scraped_info['examples'][option-1]): # save the example
         open(f'{def_path}/example{index_ex}.mp3', 'wb').write(example['mp3'])
         open(f'{def_path}/example{index_ex}.txt', 'wt').write(example['example'])
 
-    if scraped_info['searched word']['mp3'] != None:
+    if scraped_info['searched word']['mp3'] != None: # save the .mp3 word
         with open(f"words/{scraped_info['searched word']['word']}/{scraped_info['searched word']['word']}.mp3", 'wb') as def_file:
             def_file.write(scraped_info['searched word']['mp3'])
