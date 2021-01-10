@@ -32,7 +32,7 @@ def focus_screen():
     focus Ankin screen process
     """
     w = WindowMgr()
-    w.find_window_wildcard("[A-Za-z\s0-9]+ - Anki") # matching the Anki home page with the program
+    w.find_window_wildcard(".* - Anki") # matching the Anki home page with the program
     w.set_foreground()
 
 def add_word(word, option, scraped_info, t_sleep=1.75):

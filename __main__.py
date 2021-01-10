@@ -2,11 +2,11 @@ import os
 from rpa import add_word
 import pyinputplus as pyip
 from web_scraping import web_scraping, write
-from pyip_support import check_is_int, tranform2bool
+import support
 
 def main():
     os.system('cls')
-    word = pyip.inputCustom(check_is_int, prompt='What is the name of the word/expression? (ctrl+C to cancel)\n').replace(' ', '-')
+    word = pyip.inputCustom(support.check_is_int, prompt='What is the name of the word/expression? (ctrl+C to cancel)\n').replace(' ', '-')
     print('Scraping, please wait')
     scraped_info = web_scraping(word)
     os.system('cls')
@@ -37,6 +37,9 @@ def main():
         option = 1
         write(scraped_info, option)
         print(f"The folder ./word/{word}/meaning_{option}/ was created and the examples and the meaning were saved.")
-    is_rpa = pyip.inputYesNo(prompt="Do you want to carry out the RPA (Robotic Process Automation) on Anki? (Yes/No question) (ctrl+C to cancel)\n", postValidateApplyFunc=tranform2bool)
+    is_rpa = pyip.inputYesNo(prompt="Do you want to carry out the RPA (Robotic Process Automation) on Anki? (Yes/No question) (ctrl+C to cancel)\n", postValidateApplyFunc=support.tranform2bool)
     if is_rpa:
         add_word(word, option, scraped_info)
+
+if __name__ == '__main__':
+    main()
