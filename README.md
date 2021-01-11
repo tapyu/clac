@@ -23,7 +23,7 @@ CLAC works on the following way:
 
 ---
 ### FAQ
-1. **Why CLAC isn't a Anki addon**? Because I do not have knowledge enough with [QT for py](https://doc.qt.io/qtforpython/) to turn CLAC an addons. The current approach to learn about Anki addon is [some poor references](https://www.reddit.com/r/Anki/comments/bae3yx/building_addons_without_reading_all_the_source/) or learning with the source code from other addons 😑. **I do not have time to do it**.
+1. **Why CLAC isn't a Anki addon**? Because I do not have enough knowledge with [QT for py](https://doc.qt.io/qtforpython/) to turn CLAC an addons. The current approach to learn about Anki addon is [some poor references](https://www.reddit.com/r/Anki/comments/bae3yx/building_addons_without_reading_all_the_source/) or learning with the source code from other addons 😑. **I do not have time to do it**.
 
 1. **How can I turn CLAC an addons**? If you are familiar with Anki addon development, you could exploit the web scraping performed on CLAC to collect the necessary information and create an Anki card using the Anki GUI itself. Just let me know making a pull request and let's work together 😄.
 
