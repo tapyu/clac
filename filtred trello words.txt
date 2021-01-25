@@ -1,4 +1,25 @@
 stroll
+dimly
+whim
+skunk
+kitschy
+whiff
+crippled
+brittle
+blare
+froth
+dicey
+swirl
+hand out
+want out
+plaster
+ashtray
+musty
+dingy
+abide
+comply
+gamble
+utter
 bush
 scurry
 gist
@@ -8,6 +29,7 @@ nod
 roam
 grudge
 savvy
+bounty
 fable
 breed
 thrive
@@ -26,7 +48,7 @@ fled
 live up
 perceive
 Accomplish
-lie - You can talk about where something such as a problem, solution, or fault lies to say what you think it consists of, involves, or is caused by.
+lie
 Appalling
 came about
 assess
@@ -83,6 +105,7 @@ Delighted
 Delve 
 Disgust 
 Dough 
+shore
 Dressed 
 Dust
 Fate 
@@ -96,11 +119,12 @@ Greet
 Grief 
 Grim
 accrue 
-acquaint 
+acquaint
+laudable 
 Affair 
 Akin
-fabric - cloth or other material produced by weaving together cotton
-drive home - to make clear by special emphasis
+fabric
+drive home
 amenable 
 amend 
 appointments 
@@ -180,7 +204,8 @@ hold back
 uncanny
 come by
 hunch 
-Ink 
+Ink
+inkling 
 inner 
 Insist 
 Itch 
@@ -209,7 +234,7 @@ lounge
 Ludicrous 
 Lurk
 Maze 
-make of - make of something, you want to know what their impression, opinion, or understanding of it is.
+make of
 make out
 make off
 mean 
@@ -259,7 +284,9 @@ Rip
 rotten 
 Rumble
 scarcity
-come across - make that impression on people who meet them or are listening to them 
+come across
+come over
+roll out
 came about
 scoop 
 scrap 
@@ -328,11 +355,10 @@ od away with
 Strive 
 Struggle 
 Stunning 
-turn in -  you give it to the person who asked you to do it.
+turn in
 do over
 make it up to
 make up
-
 subtle 
 Suffice
 surmount 

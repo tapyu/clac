@@ -1,5 +1,5 @@
 import subprocess, pyautogui, time, glob, os
-from support.rpa_support import focus_screen
+from utils.rpa_utils import focus_screen
 
 def add_word(word, option, scraped_info, t_sleep=1.75):
     """
