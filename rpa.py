@@ -1,3 +1,4 @@
+from ctypes import pythonapi
 import subprocess, pyautogui, time, glob, os
 from utils.rpa_utils import focus_screen
 
@@ -14,8 +15,15 @@ def add_word(word, option, scraped_info, t_sleep=1.75):
     n_example = len(glob.glob(f'./words/{word}/meaning_{option}/example[0-9].txt')) # numbers of examples
 
     time.sleep(t_sleep)
-    pyautogui.write(word + '\n\n')
-    if scraped_info['searched word']['mp3'] != None:
+    pyautogui.write(word + '\n')
+    
+    try: # try to write the inflections
+        with open(f'./words/{word}/inflections.txt') as file: # add inflection (if exist)
+            pyautogui.write('Inflections: ' + file.readline() + '\n\n')
+    except FileNotFoundError: # inflections not found, pass
+        pass
+
+    if scraped_info['searched word']['mp3'] != None: # adding the word pronunciation
         pyautogui.hotkey('f3') # attach picture/audio/video
         time.sleep(t_sleep)
         pyautogui.hotkey('alt', 'd') # path insert mode
@@ -60,8 +68,8 @@ def add_word(word, option, scraped_info, t_sleep=1.75):
     time.sleep(t_sleep)
     pyautogui.press('tab') # switch to back
     time.sleep(t_sleep)
-    pyautogui.press('enter') # switch to back
+    pyautogui.press('enter')
     time.sleep(t_sleep)
-    pyautogui.press('esc') # switch to back
+    pyautogui.press('esc')
 
 # add_word('bait', 2) # just testing
