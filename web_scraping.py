@@ -41,7 +41,7 @@ def web_scraping(name):
         for example in item.find('div', class_='sense', recursive=False).find_all('div', class_='cit type-example', recursive=False):
             mp3_url = example.find('span', class_='ptr exa_sound type-exa_sound').a['data-src-mp3']
             mp3 = requests.get(mp3_url, headers={'User-Agent': 'Mozilla/5.0'})
-            example_per_item.append({'example': example.find('span', class_='quote').text, 'mp3': mp3.content})
+            example_per_item.append({'example': example.find('span', class_='quote').text.replace('\n',' '), 'mp3': mp3.content})
         scraped_info['items'][-1]['examples'] = example_per_item # add the examples to the new item. If there aren't examples, it is a empty list
     return scraped_info
 
