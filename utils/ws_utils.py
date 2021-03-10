@@ -24,7 +24,11 @@ def search_item(tag): # catching the item of the searched word
     """
     assure that the web scraping returns the item
     """
-    if ' '.join(tag['class'])!='hom' or ' '.join(tag.div['class'])!='sense': #  or tag.div == None
-        return False
+    if ' '.join(tag['class'])=='hom': #  or tag.div == None
+        try:
+            if ' '.join(tag.div['class'])=='sense':
+                return True
+        except TypeError:
+            return False
     else:
-        return True
+        return False # it is not an item
