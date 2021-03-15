@@ -1,5 +1,5 @@
 from utils.main_utils import run_clac_cli
-import argparse
+import argparse, warnings, os, time
 
 def parse_args():
     """ parse CLI arguments
@@ -23,12 +23,25 @@ def parse_args():
 
 def main():
     args = parse_args()
-    try:
+    if os.path.isfile(args.word_or_list): # word_or_list is treated as a txt file
         with open(args.word_or_list, 'r') as file:
             for line in file:
-                run_clac_cli(line.rstrip(), args.yes_rpa) # the CLI argument is a line-separeted .txt file
-    except FileNotFoundError:
-        run_clac_cli(args.word_or_list, args.yes_rpa) # the CLI argument is a single word
+                try:
+                    run_clac_cli(line.rstrip(), args.yes_rpa) # the CLI argument is a line-separeted .txt file
+                except ValueError as e:
+                    with open('./failed_words.txt', 'a') as txt_file:
+                        txt_file.write(f'{line} [{e.args[0]}]')
+                    warnings.warn(f'The word {line} was found, but it did not have any meaning statement on the web site. This word was saved on ./failed_words.txt')
+                    time.sleep(1)
+
+    else: # word_or_list is treated as a word
+        try:
+            run_clac_cli(args.word_or_list, args.yes_rpa) # the CLI argument is a single word
+        except ValueError as e:
+                    with open('./failed_words.txt', 'a') as txt_file:
+                        txt_file.write(f'{args.word_or_list} [{e.args[0]}]')
+                    warnings.warn(f'The word {args.word_or_list} was found, but it did not have any meaning statement on the web site. This word was saved on ./failed_words.txt. Please, try another word')
+                    input("Press Enter to continue...")
 
 if __name__ == '__main__':
     main()

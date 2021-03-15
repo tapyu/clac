@@ -9,17 +9,20 @@ def run_clac_cli(word, yes_rpa):
     This is the main function that links the CLAC with a CLI
     """
     print('Scraping, please wait')
-    scraped_info = web_scraping(word)
+    try:
+        scraped_info = web_scraping(word)
+    except ValueError as e:
+        raise ValueError(e.args[0]) from e
     os.system('cls')
 
-    count = 0
     if scraped_info != None:
         print(f"The word \"{word}\" was found on the Collins website!\nhttps://www.collinsdictionary.com/us/dictionary/english/{word}\n\n")
         print("_"*59)
         if scraped_info['inflections'] == None:
-            print(str(count) + '. This word(s) don\'t have inflections')
+            print('This word(s) don\'t have inflections')
         else:
-            print(str(count) +  ". infletions:" + scraped_info['inflections'])
+            print( "Infletions:" + scraped_info['inflections'])
+        count = 1
         print(f"{count}. Number of meanings: {str(len(scraped_info['items']))}")
         for item_count, item in enumerate(scraped_info['items'], start=1): # print the kind and meaning of an item
             print(f'Meaning number {item_count}')

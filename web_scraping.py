@@ -13,7 +13,7 @@ def web_scraping(name):
     main = soup.find('div', id='main_content')
     center = main.find(is_class_cell_center, recursive=False) # find the center column in the website
     try:
-        meaning_core = center.div.find('div', class_='he').div.find('div', class_='dictionaries dictionary').find('div', class_=re.compile('dictionary Cob_Adv_(US|Brit) dictentry')).div.div # return the main core the searched word
+        meaning_core = center.div.find('div', class_='he').div.find('div', class_='dictionaries dictionary').find('div', class_=re.compile('dictionary Cob_Adv_(?:US|Brit) dictentry')).div.div # return the main core the searched word
     except AttributeError:
         meaning_core = center.div.find('div', class_='he').div.find('div', class_='dictionaries dictionary dictionary Collins_Eng_Dict').div.div # return the main core the searched word
 
@@ -43,7 +43,10 @@ def web_scraping(name):
             mp3 = requests.get(mp3_url, headers={'User-Agent': 'Mozilla/5.0'})
             example_per_item.append({'example': example.find('span', class_='quote').text.replace('\n',' '), 'mp3': mp3.content})
         scraped_info['items'][-1]['examples'] = example_per_item # add the examples to the new item. If there aren't examples, it is a empty list
-    return scraped_info
+    if len(scraped_info['items']) != 0: # it was possible to gather items
+        return scraped_info
+    else:
+        raise ValueError('No meanings found')
 
 
 def write(scraped_info, option):
