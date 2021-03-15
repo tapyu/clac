@@ -13,6 +13,9 @@ def run_clac_cli(word, yes_rpa):
         scraped_info = web_scraping(word)
     except ValueError as e:
         raise ValueError(e.args[0]) from e
+    except LookupError as e:
+        raise LookupError(e.args[0]) from e
+    
     os.system('cls')
 
     if scraped_info != None:

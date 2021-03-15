@@ -13,9 +13,12 @@ def web_scraping(name):
     main = soup.find('div', id='main_content')
     center = main.find(is_class_cell_center, recursive=False) # find the center column in the website
     try:
-        meaning_core = center.div.find('div', class_='he').div.find('div', class_='dictionaries dictionary').find('div', class_=re.compile('dictionary Cob_Adv_(?:US|Brit) dictentry')).div.div # return the main core the searched word
+        meaning_core = center.div.find('div', class_='he').div.find('div', class_='dictionaries dictionary').find('div', class_=re.compile('dictionary Cob_Adv_(?:US|Brit)( dictentry)?')).div.div # return the main core the searched word
     except AttributeError:
-        meaning_core = center.div.find('div', class_='he').div.find('div', class_='dictionaries dictionary dictionary Collins_Eng_Dict').div.div # return the main core the searched word
+        try:
+            meaning_core = center.div.find('div', class_='he').div.find('div', class_='dictionaries dictionary dictionary Collins_Eng_Dict').div.div # return the main core the searched word
+        except AttributeError:
+            raise LookupError('word not found')
 
     # catching the searched word .mp3
     try:

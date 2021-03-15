@@ -28,19 +28,26 @@ def main():
             for line in file:
                 try:
                     run_clac_cli(line.rstrip(), args.yes_rpa) # the CLI argument is a line-separeted .txt file
-                except ValueError as e:
+                except (ValueError,LookupError) as e:
                     with open('./failed_words.txt', 'a') as txt_file:
-                        txt_file.write(f'{line} [{e.args[0]}]')
-                    warnings.warn(f'The word {line} was found, but it did not have any meaning statement on the web site. This word was saved on ./failed_words.txt')
-                    time.sleep(1)
+                        txt_file.write(f'{line} [{e.args[0]}]\n')
+                    if type(e) == ValueError:
+                        warnings.warn(f'The word {args.word_or_list} was found, but it did not have any meaning statement on the web site. This word was saved on ./failed_words.txt. Please, try another word')
+                    else: # type(e) == LookupError
+                        warnings.warn(f'The word {args.word_or_list} was not found. It was saved on ./failed_words.txt. Please, try another word')
+                    time.sleep(2)
+                    os.system('cls')
 
     else: # word_or_list is treated as a word
         try:
             run_clac_cli(args.word_or_list, args.yes_rpa) # the CLI argument is a single word
-        except ValueError as e:
+        except (ValueError,LookupError) as e:
                     with open('./failed_words.txt', 'a') as txt_file:
-                        txt_file.write(f'{args.word_or_list} [{e.args[0]}]')
-                    warnings.warn(f'The word {args.word_or_list} was found, but it did not have any meaning statement on the web site. This word was saved on ./failed_words.txt. Please, try another word')
+                        txt_file.write(f'{args.word_or_list} [{e.args[0]}]\n')
+                    if type(e) == ValueError:
+                        warnings.warn(f'The word {args.word_or_list} was found, but it did not have any meaning statement on the web site. This word was saved on ./failed_words.txt. Please, try another word')
+                    else: # type(e) == LookupError
+                        warnings.warn(f'The word {args.word_or_list} was not found. It was saved on ./failed_words.txt. Please, try another word')
                     input("Press Enter to continue...")
 
 if __name__ == '__main__':
