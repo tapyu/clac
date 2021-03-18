@@ -1,8 +1,8 @@
 import os
-from rpa import add_word
+from clac.rpa import add_word
 from .pyip_utils import tranform2bool
 import pyinputplus as pyip
-from web_scraping import web_scraping, write
+from clac.web_scraping import web_scraping, write
 
 def run_clac_cli(word, yes_rpa):
     """ 

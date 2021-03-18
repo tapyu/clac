@@ -1,5 +1,5 @@
 import requests, os, re
-from utils.ws_utils import get_soup, is_class_cell_center, search_item
+from clac.utils.ws_utils import get_soup, is_class_cell_center, search_item
 
 def web_scraping(name):
     """

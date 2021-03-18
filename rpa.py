@@ -1,6 +1,6 @@
 from ctypes import pythonapi
 import subprocess, pyautogui, time, glob, os
-from utils.rpa_utils import focus_screen
+from clac.utils.rpa_utils import focus_screen
 
 def add_word(word, option, scraped_info, t_sleep=1.75):
     """

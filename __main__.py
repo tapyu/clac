@@ -1,4 +1,4 @@
-from utils.main_utils import run_clac_cli
+from clac.utils.main_utils import run_clac_cli
 import argparse, warnings, os, time
 
 def parse_args():
