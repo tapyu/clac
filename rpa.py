@@ -2,7 +2,7 @@ from ctypes import pythonapi
 import subprocess, pyautogui, time, glob, os
 from clac.utils.rpa_utils import focus_screen
 
-def add_word(word, option, scraped_info, t_sleep=1.75):
+def add_word(word, option, scraped_info, t_sleep=2.75):
     """
     a RPA that adds a word to Anki
     """
@@ -26,12 +26,12 @@ def add_word(word, option, scraped_info, t_sleep=1.75):
     if scraped_info['searched word']['mp3'] != None: # adding the word pronunciation
         pyautogui.hotkey('f3') # attach picture/audio/video
         time.sleep(t_sleep)
-        pyautogui.hotkey('alt', 'd') # path insert mode
+        pyautogui.hotkey('ctrl', 'l') # path insert mode
         pyautogui.write(os.getcwd() + f'\\words\\{word}')
         time.sleep(t_sleep)
         pyautogui.press('enter')
         time.sleep(t_sleep)
-        pyautogui.hotkey('alt', 'o')
+        pyautogui.hotkey('alt', 'n')
         time.sleep(t_sleep)
         pyautogui.write(f'{word}.mp3')
         time.sleep(t_sleep)
@@ -42,12 +42,12 @@ def add_word(word, option, scraped_info, t_sleep=1.75):
             pyautogui.write(('\n' if example_number!=0 else '') + f'Example {example_number+1}:' + next(file) + '\n') # write the example
             pyautogui.hotkey('f3') # attach picture/audio/video
             time.sleep(t_sleep)
-            pyautogui.hotkey('alt', 'd') # path insert mode
+            pyautogui.hotkey('ctrl', 'l') # path insert mode
             pyautogui.write(os.getcwd() + f'\\words\\{word}\\meaning_{option}')
             time.sleep(t_sleep)
             pyautogui.press('enter')
             time.sleep(t_sleep)
-            pyautogui.hotkey('alt', 'o')
+            pyautogui.hotkey('alt', 'n')
             time.sleep(t_sleep)
             pyautogui.write(f'example{example_number}.mp3')
             time.sleep(t_sleep)
