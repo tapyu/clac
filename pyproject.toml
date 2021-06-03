@@ -8,8 +8,10 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.8"
 bs4 = "^0.0.1"
-win32com = {version = "*", markers = "sys_platform == 'win32'"}
+pywin32 = {version = "*", markers = "sys_platform == 'win32'"}
 PyAutoGUI = "^0.9.52"
+PyInputPlus = "^0.2.12"
+lxml = "*"
 
 [tool.poetry.dev-dependencies]
 

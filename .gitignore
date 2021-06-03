@@ -2,3 +2,4 @@ words/
 __pycache__/
 .vscode/
 .pypirc
+failed_words.txt
