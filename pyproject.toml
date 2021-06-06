@@ -12,6 +12,7 @@ pywin32 = {version = "*", markers = "sys_platform == 'win32'"}
 PyAutoGUI = "^0.9.52"
 PyInputPlus = "^0.2.12"
 lxml = "*"
+requests = "^2.25.1"
 
 [tool.poetry.dev-dependencies]
 
