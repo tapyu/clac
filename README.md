@@ -15,11 +15,36 @@ CLAC works on the following way:
         1. Text of the meaning
 
 ---
-### Main packages used in this RPA
+### Installing
 
-<!-- 1. **Selenium**:  Selenium is a web testing library. It is used to automate browser activities. -->
-1. [**BeautifulSoup**](https://www.crummy.com/software/BeautifulSop/bs4/doc/): It is a  package for parsing HTML and XML documents. It creates parse trees that is helpful to extract the data easily.
-1. [**PyAutoGUI**](https://pyautogui.readthedocs.io/en/latest/): It is a cross-platform  package that controls the mouse and keyboard to automate interactions with other applications. 
+- `git clone https://github.com/tapyu/clac`
+
+In the `clac/` folder, and run
+
+- `py -m pip install .`
+
+To install the required packages.
+
+Alternatively, you can create a virtual environment to separate the CLAC's package requirements from the rest of your system site packages. In this case, you should install the packages from the `pyproject.toml` file. It is recommended to use [Poetry](https://python-poetry.org/) to make the package dependency management.
+
+
+---
+### Usage
+
+The following sintax follows [Git's Coding Guidelines](https://github.com/git/git/blob/master/Documentation/CodingGuidelines#:~:text=Writing%20Documentation)
+
+<!-- `clac <word-or-list> [--yes-rpa|-y] [--auto-remove|-r]` -->
+`clac <word-or-list> [--yes-rpa|-y]`
+
+`clac [--help|-h]`
+
+
+- `<word-or-list>`: A single word or a path to a line-separated `.txt` file in which each line is a single word. CLAC will first assume that the argument is a path. If it fails, the argument will be treated as a single word.
+- `--yes-rpa|-y`: Optional argument to run the RPA as soon as it saves the word.
+<!-- - `--auto-remove|-r`: Optional argument to remove the folders used to save the data. -->
+- `[--help|-h]`: Show a help message.
+
+In case of doubts, check this [video tutorial](https://www.youtube.com/watch?v=9XNqNNM2AhI).
 
 ---
 ### FAQ
