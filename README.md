@@ -19,7 +19,7 @@ CLAC works on the following way:
 
 - `git clone https://github.com/tapyu/clac`
 
-In the `clac/` folder, and run
+In the `clac/` folder, run
 
 - `py -m pip install .`
 
@@ -42,9 +42,9 @@ The following sintax follows [Git's Coding Guidelines](https://github.com/git/gi
 - `<word-or-list>`: A single word or a path to a line-separated `.txt` file in which each line is a single word. CLAC will first assume that the argument is a path. If it fails, the argument will be treated as a single word.
 - `--yes-rpa|-y`: Optional argument to run the RPA as soon as it saves the word.
 <!-- - `--auto-remove|-r`: Optional argument to remove the folders used to save the data. -->
-- `[--help|-h]`: Show a help message.
+- `--help|-h`: Show a help message.
 
-In case of doubts, check this [video tutorial](https://www.youtube.com/watch?v=9XNqNNM2AhI).
+If you have any question, check this [video tutorial](https://www.youtube.com/watch?v=9XNqNNM2AhI).
 
 ---
 ### FAQ
