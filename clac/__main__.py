@@ -15,7 +15,7 @@ def parse_args():
      """
     parser = argparse.ArgumentParser(description='RPA to create language cards on Anki', prog='clac', usage='%(prog)s <word-or-list> [-y|--yes-rpa] [-r|--auto-remove]', epilog='Do you want to help? Collabore on my project! :)')
 
-    parser.add_argument('<word-or-list>', help='A single word or a path to a line-separated .txt file in which each line is a single word. CLAC will first assume that the argument is a path. If it fails, the argument will be treated as a single word.')
+    parser.add_argument('word_or_list', help='A single word or a path to a line-separated .txt file in which each line is a single word. CLAC will first assume that the argument is a path. If it fails, the argument will be treated as a single word.')
     parser.add_argument('-y', '--yes-rpa', help='Optional argument to run the RPA as soon as it saves the word.', action='store_true') # optional argument
     # parser.add_argument('-r', '--auto-remove', help='Optional argument to remove the folders used to save the data.', action='store_true') # TODO
 
