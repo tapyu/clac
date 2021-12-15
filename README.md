@@ -14,6 +14,8 @@ CLAC works on the following way:
     1. back
         1. Text of the meaning
 
+To do so, CLAC takes over your computer peripherals (mouse and keyboard) and start making the card.
+
 ---
 ### Installing
 
