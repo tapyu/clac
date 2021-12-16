@@ -48,6 +48,12 @@ The following sintax follows [Git's Coding Guidelines](https://github.com/git/gi
 
 If you have any question, check this [video tutorial](https://www.youtube.com/watch?v=9XNqNNM2AhI).
 
+
+---
+### Contributing
+
+CLAC is a relatively easy project, where any programmer with a basic level in Python and a high level of interest will be welcome! To contribute to this project, take a look at the [project](https://github.com/tapyu/clac/projects/1) or the open [issues](https://github.com/tapyu/clac/issues).
+
 ---
 ### FAQ
 1. **Why CLAC isn't a Anki addon**? Because I do not have enough knowledge with [QT for py](https://doc.qt.io/qtforpython/) to turn CLAC an addons. The current approach to learn about Anki addon is [some poor references](https://www.reddit.com/r/Anki/comments/bae3yx/building_addons_without_reading_all_the_source/) or learning with the source code from other addons 😑. **I do not have time to do it**.
