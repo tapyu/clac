@@ -3,3 +3,4 @@ __pycache__/
 .vscode/
 .pypirc
 failed_words.txt
+my_list.txt
